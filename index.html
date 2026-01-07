@@ -9,24 +9,65 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
         .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            background: linear-gradient(90deg, #10b981, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Running Text Animation */
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            background: #10b981; /* Hijau Emerald */
+            color: white;
+            padding: 8px 0;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            position: fixed;
+            top: 0;
+            z-index: 60;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Adjusting nav for marquee */
+        nav { top: 36px; }
+
+        .bg-green-soft {
+            background-color: #f0fdf4;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
+    <!-- Running Text (Marquee) -->
+    <div class="marquee">
+        <div class="marquee-content">
+            🚀 SELAMAT DATANG DI PORTOFOLIO M. RIZKI RAMDHAN — CREATIVE DEVELOPER — VIDEO EDITOR — CYBER SECURITY ENTHUSIAST — OPEN FOR COLLABORATION — 📧 riskika04@gmail.com — 📱 0895-1863-5366 — 🚀
+        </div>
+    </div>
+
     <!-- Navigasi -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold gradient-text tracking-widest">WELCOME</a>
             <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#home" class="hover:text-blue-600 transition">Beranda</a>
-                <a href="#tentang" class="hover:text-blue-600 transition">Tentang</a>
-                <a href="#proyek" class="hover:text-blue-600 transition">Proyek</a>
-                <a href="#kontak" class="hover:text-blue-600 transition">Kontak</a>
+                <a href="#home" class="hover:text-green-600 transition">Beranda</a>
+                <a href="#tentang" class="hover:text-green-600 transition">Tentang</a>
+                <a href="#proyek" class="hover:text-green-600 transition">Proyek</a>
+                <a href="#kontak" class="hover:text-green-600 transition">Kontak</a>
             </div>
             <button class="md:hidden text-2xl" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
@@ -34,30 +75,34 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-4 space-y-4 shadow-lg">
-            <a href="#home" class="block hover:text-blue-600" onclick="toggleMenu()">Beranda</a>
-            <a href="#tentang" class="block hover:text-blue-600" onclick="toggleMenu()">Tentang</a>
-            <a href="#proyek" class="block hover:text-blue-600" onclick="toggleMenu()">Proyek</a>
-            <a href="#kontak" class="block hover:text-blue-600" onclick="toggleMenu()">Kontak</a>
+            <a href="#home" class="block hover:text-green-600" onclick="toggleMenu()">Beranda</a>
+            <a href="#tentang" class="block hover:text-green-600" onclick="toggleMenu()">Tentang</a>
+            <a href="#proyek" class="block hover:text-green-600" onclick="toggleMenu()">Proyek</a>
+            <a href="#kontak" class="block hover:text-green-600" onclick="toggleMenu()">Kontak</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+    <section id="home" class="pt-48 pb-20 px-6 bg-green-soft relative overflow-hidden">
+        <!-- Background Decor -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-green-200 rounded-full blur-3xl opacity-30"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-200 rounded-full blur-3xl opacity-30"></div>
+
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
             <div class="flex-1 text-center md:text-left">
-                <h2 class="text-blue-600 font-semibold tracking-wide uppercase mb-2">Halo, Saya</h2>
+                <h2 class="text-green-600 font-semibold tracking-wide uppercase mb-2">Halo, Saya</h2>
                 <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight uppercase">𝙈.𝙍𝙄𝙕𝙆𝙄 𝙍𝘼𝙈𝘼𝘿𝙃𝘼𝙉</h1>
                 <p class="text-xl text-gray-600 mb-8 max-w-lg">
                     Seorang Pengembang Kreatif yang berfokus pada membangun pengalaman digital yang fungsional dan indah.
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="#kontak" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-200">Hubungi Saya</a>
-                    <a href="#proyek" class="border border-gray-300 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Lihat Karya</a>
+                    <a href="#kontak" class="bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition shadow-lg shadow-green-200">Hubungi Saya</a>
+                    <a href="#proyek" class="border border-green-300 text-green-700 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition">Lihat Karya</a>
                 </div>
             </div>
             <div class="flex-1 flex justify-center">
                 <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition"></div>
+                    <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition"></div>
                     <img id="profile-img" src="https://files.catbox.moe/nirn95.jpg" alt="M. Rizki Ramdhan" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-2xl transition transform hover:scale-[1.02]">
                 </div>
             </div>
@@ -68,19 +113,19 @@
     <section class="bg-white py-12 border-y border-gray-100 shadow-inner">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-                <h3 class="text-3xl font-bold text-blue-600">3+</h3>
+                <h3 class="text-3xl font-bold text-green-600">3+</h3>
                 <p class="text-gray-500 text-sm uppercase font-semibold tracking-wider">Tahun Pengalaman</p>
             </div>
             <div>
-                <h3 class="text-3xl font-bold text-blue-600">50+</h3>
+                <h3 class="text-3xl font-bold text-green-600">50+</h3>
                 <p class="text-gray-500 text-sm uppercase font-semibold tracking-wider">Proyek Selesai</p>
             </div>
             <div>
-                <h3 class="text-3xl font-bold text-blue-600">100+</h3>
+                <h3 class="text-3xl font-bold text-green-600">100+</h3>
                 <p class="text-gray-500 text-sm uppercase font-semibold tracking-wider">Klien Puas</p>
             </div>
             <div>
-                <h3 class="text-3xl font-bold text-blue-600">15+</h3>
+                <h3 class="text-3xl font-bold text-green-600">15+</h3>
                 <p class="text-gray-500 text-sm uppercase font-semibold tracking-wider">Sertifikasi</p>
             </div>
         </div>
@@ -91,7 +136,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">Tentang Saya</h2>
-                <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+                <div class="h-1 w-20 bg-green-600 mx-auto rounded-full"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
@@ -103,21 +148,21 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 transition hover:shadow-md">
+                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 transition hover:shadow-md hover:border-green-200">
                         <i class="fab fa-react text-blue-500 text-2xl"></i>
                         <span class="font-medium">React JS</span>
                     </div>
-                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 transition hover:shadow-md">
-                        <i class="fas fa-video text-red-500 text-2xl"></i>
+                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 transition hover:shadow-md hover:border-green-200">
+                        <i class="fas fa-video text-green-500 text-2xl"></i>
                         <span class="font-medium">Video Editing</span>
                     </div>
-                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 transition hover:shadow-md">
-                        <i class="fas fa-robot text-green-500 text-2xl"></i>
+                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 transition hover:shadow-md hover:border-green-200">
+                        <i class="fas fa-robot text-purple-500 text-2xl"></i>
                         <span class="font-medium">Bot Scripting</span>
                     </div>
-                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 transition hover:shadow-md">
+                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center space-x-3 transition hover:shadow-md hover:border-green-200">
                         <i class="fas fa-shield-alt text-gray-700 text-2xl"></i>
-                        <span class="font-medium">Cyber Sec</span>
+                        <span class="font-medium">Cyber Security</span>
                     </div>
                 </div>
             </div>
@@ -125,55 +170,52 @@
     </section>
 
     <!-- Proyek Section -->
-    <section id="proyek" class="py-20 px-6 bg-gray-100">
+    <section id="proyek" class="py-20 px-6 bg-green-50">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">Project Saya</h2>
-                <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+                <div class="h-1 w-20 bg-green-600 mx-auto rounded-full"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Proyek 1: Apps Crasher WhatsApp -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg group transition duration-300 hover:shadow-2xl">
+                <!-- Proyek 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg group transition duration-300 hover:shadow-2xl hover:-translate-y-2">
                     <div class="h-48 overflow-hidden relative border-b border-gray-100">
                         <img src="https://files.catbox.moe/pvk5d6.jpg" alt="Apps Crasher WhatsApp" class="w-full h-full object-cover transition transform group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-blue-600">APPS CRASHER WHATSAPP</h3>
+                        <h3 class="font-bold text-xl mb-2 text-green-600">APPS CRASHER WHATSAPP</h3>
                         <p class="text-gray-600 text-sm mb-4 leading-relaxed">Platform otomasi modern dengan antarmuka yang bersih dan integrasi sistem pelayanan otomatis yang canggih.</p>
                         <div class="flex gap-2">
-                            <span class="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded">React</span>
-                            <span class="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded">WhatsApp</span>
+                            <span class="text-xs font-bold bg-green-50 text-green-600 px-2 py-1 rounded">React</span>
+                            <span class="text-xs font-bold bg-green-50 text-green-600 px-2 py-1 rounded">WhatsApp</span>
                         </div>
                     </div>
                 </div>
-                <!-- Proyek 2: Job Portal System -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg group transition duration-300 hover:shadow-2xl">
+                <!-- Proyek 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg group transition duration-300 hover:shadow-2xl hover:-translate-y-2">
                     <div class="h-48 overflow-hidden relative border-b border-gray-100">
                         <img src="https://files.catbox.moe/6anu6t.jpg" alt="Job Portal" class="w-full h-full object-cover transition transform group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-blue-600 uppercase">Product Digital</h3>
+                        <h3 class="font-bold text-xl mb-2 text-green-600 uppercase">Product Digital</h3>
                         <p class="text-gray-600 text-sm mb-4 leading-relaxed">Product digital lynk yang telah saya buat seperti template website atau panel pterodctyl dan lain-lain.</p>
                         <div class="flex gap-2">
-                            <span class="text-xs font-bold bg-purple-50 text-purple-600 px-2 py-1 rounded">Lynk</span>
-                            <span class="text-xs font-bold bg-purple-50 text-purple-600 px-2 py-1 rounded">Product</span>
+                            <span class="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded">Lynk</span>
+                            <span class="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded">Product</span>
                         </div>
                     </div>
                 </div>
-                <!-- Proyek 3: Health Monitor (Update Gambar) -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg group transition duration-300 hover:shadow-2xl">
+                <!-- Proyek 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg group transition duration-300 hover:shadow-2xl hover:-translate-y-2">
                     <div class="h-48 overflow-hidden relative border-b border-gray-100">
                         <img src="https://files.catbox.moe/tjkix5.jpeg" alt="Health Monitor" class="w-full h-full object-cover transition transform group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-blue-600 uppercase">Editing</h3>
+                        <h3 class="font-bold text-xl mb-2 text-green-600 uppercase">Editing</h3>
                         <p class="text-gray-600 text-sm mb-4 leading-relaxed">Editing animasi dan 3D saya juga sering membuat preset aplikasi editing di sebuah platform TikTok.</p>
                         <div class="flex gap-2">
-                            <span class="text-xs font-bold bg-green-50 text-green-600 px-2 py-1 rounded">Edit</span>
-                            <span class="text-xs font-bold bg-green-50 text-green-600 px-2 py-1 rounded">3D</span>
+                            <span class="text-xs font-bold bg-red-50 text-red-600 px-2 py-1 rounded">Edit</span>
+                            <span class="text-xs font-bold bg-red-50 text-red-600 px-2 py-1 rounded">3D</span>
                         </div>
                     </div>
                 </div>
@@ -184,44 +226,46 @@
     <!-- Kontak Section -->
     <section id="kontak" class="py-20 px-6">
         <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row border border-gray-100">
-            <div class="bg-blue-600 p-10 text-white md:w-1/3 flex flex-col justify-between relative overflow-hidden">
+            <div class="bg-green-600 p-10 text-white md:w-1/3 flex flex-col justify-between relative overflow-hidden">
                 <div class="relative z-10">
                     <h2 class="text-3xl font-black mb-6 italic uppercase tracking-tighter text-white">Ayo Ngobrol!</h2>
                     <p class="mb-8 opacity-90 text-sm leading-relaxed text-white">Punya proyek menarik? Mari bicarakan bagaimana saya bisa membantu Anda mewujudkannya.</p>
                     <div class="space-y-6">
                         <div class="flex items-center space-x-3 transition hover:translate-x-1">
-                            <i class="fas fa-envelope text-blue-200"></i>
+                            <i class="fas fa-envelope text-green-200"></i>
                             <span class="text-sm">riskika04@gmail.com</span>
                         </div>
                         <div class="flex items-center space-x-3 transition hover:translate-x-1">
-                            <i class="fab fa-whatsapp text-blue-200 text-lg"></i>
+                            <i class="fab fa-whatsapp text-green-200 text-lg"></i>
                             <a href="https://wa.me/6289518635366" target="_blank" class="text-sm hover:underline font-bold tracking-wide">0895-1863-5366</a>
                         </div>
                     </div>
                 </div>
-                <div class="mt-10 pt-6 border-t border-blue-400 relative z-10">
-                    <p class="font-black text-xs tracking-[0.2em] text-blue-200 uppercase">Only for Business!</p>
+                <div class="mt-10 pt-6 border-t border-green-400 relative z-10">
+                    <p class="font-black text-xs tracking-[0.2em] text-green-200 uppercase">Only for Business!</p>
                 </div>
-                <!-- Dekorasi -->
-                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-500 rounded-full opacity-50 blur-3xl"></div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-green-500 rounded-full opacity-50 blur-3xl"></div>
             </div>
             <div class="p-12 md:w-2/3">
-                <form onsubmit="event.preventDefault(); alert('Pesan Anda telah terkirim!');">
+                <div id="contact-success" class="hidden mb-6 p-4 bg-green-50 text-green-700 rounded-xl font-bold text-center border border-green-200">
+                    Pesan Anda telah terkirim!
+                </div>
+                <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-success').classList.remove('hidden'); this.reset();">
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Nama Lengkap</label>
-                            <input type="text" placeholder="Nama Anda" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                            <input type="text" placeholder="Nama Anda" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition" required>
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Email</label>
-                            <input type="email" placeholder="email@contoh.com" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                            <input type="email" placeholder="email@contoh.com" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition" required>
                         </div>
                     </div>
                     <div class="mb-6">
                         <label class="block text-sm font-bold text-gray-700 mb-2">Pesan</label>
-                        <textarea rows="4" placeholder="Apa yang bisa saya bantu?" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+                        <textarea rows="4" placeholder="Apa yang bisa saya bantu?" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition" required></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-xl font-black uppercase tracking-widest hover:bg-blue-700 transition transform hover:-translate-y-1 shadow-lg shadow-blue-200">Kirim Pesan</button>
+                    <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-xl font-black uppercase tracking-widest hover:bg-green-700 transition transform hover:-translate-y-1 shadow-lg shadow-green-200">Kirim Pesan</button>
                 </form>
             </div>
         </div>
@@ -230,11 +274,11 @@
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-gray-100 text-center bg-white">
         <div class="flex justify-center space-x-8 mb-8 text-2xl text-gray-400">
-            <a href="#" class="hover:text-blue-600 transition transform hover:scale-110"><i class="fab fa-github"></i></a>
-            <a href="#" class="hover:text-blue-600 transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="hover:text-blue-600 transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-green-600 transition transform hover:scale-110"><i class="fab fa-github"></i></a>
+            <a href="#" class="hover:text-green-600 transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="hover:text-green-600 transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
         </div>
-        <p class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase mb-2">© 2026 M. Rizki Ramdhan</p>
+        <p class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase mb-2">© 2026 Rzyy.</p>
         <p class="text-gray-400 text-[10px] italic">Built with passion & precision.</p>
     </footer>
 
@@ -245,4 +289,4 @@
         }
     </script>
 </body>
-</html>
+            </html>
